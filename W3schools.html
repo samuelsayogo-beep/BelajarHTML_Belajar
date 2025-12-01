@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Hitung Rata-rata</title>
+</head>
+<body>
+  <h2>Hitung Nilai Rata-rata</h2>
+
+  <p>Masukkan angka dipisahkan dengan spasi atau koma:</p>
+  <input type="text" id="inputAngka" value="80, 90, 70, 60, 100" size="40">
+  <button onclick="hitungRata()">Hitung</button>
+
+  <h3>Hasil: <span id="hasil"></span></h3>
+
+  <script>
+    function hitungRata() {
+      // Ambil teks dari input
+      let teks = document.getElementById("inputAngka").value;
+
+      // Ambil semua angka dari teks (pisahkan dengan koma/spasi)
+      let angka = teks.match(/\d+(?:\.\d+)?/g);
+
+      if (angka && angka.length > 0) {
+        // Ubah ke float dan hitung rata-rata
+        let total = angka.reduce((a, b) => a + parseFloat(b), 0);
+        let rata = total / angka.length;
+
+        // Tampilkan hasil
+        document.getElementById("hasil").textContent = rata.toFixed(2);
+      } else {
+        document.getElementById("hasil").textContent = "Tidak ada angka ditemukan.";
+      }
+    }
+  </script>
+</body>
+</html>
